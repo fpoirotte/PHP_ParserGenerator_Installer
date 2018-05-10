@@ -24,7 +24,7 @@
         }
     },
     "extra": {
-        "class": "fpoirotte\\PHP_ParserGenerator_Installer\\InstallerPlugin"
+        "class": "fpoirotte\\PHP_ParserGenerator_Installer\\Plugin"
     },
     "require": {
         "fpoirotte/php_parsergenerator": "^0.2.0",

@@ -6,7 +6,7 @@ use Composer\Package\PackageInterface;
 use Composer\Installer\LibraryInstaller;
 use Composer\Repository\InstalledRepositoryInterface;
 
-class InstallerPlugin extends LibraryInstaller
+class Installer extends LibraryInstaller
 {
     const SUPPORTED_TYPE = 'php-parsers';
 
