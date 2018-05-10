@@ -52,6 +52,11 @@ class Installer extends LibraryInstaller
         $phplemon = escapeshellcmd($phplemon);
         $parsers = self::normalizeParsers($package);
         foreach ($parsers as $target => $source) {
+            $outfile = self::getOutputPrefix($target) . '.php';
+            if (@filemtime($outfile) >= @filemtime($source)) {
+                continue;
+            }
+
             $this->io->writeError("<info>Compiling '$target' from '$source'</info>");
             $target = escapeshellarg('o=' . $target);
             $source = escapeshellarg($source);
