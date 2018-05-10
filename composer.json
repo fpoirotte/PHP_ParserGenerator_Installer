@@ -4,7 +4,7 @@
     "type": "composer-plugin",
     "description": "Automatically compiles parsers upon a package's installation",
     "keywords": ["parser", "lemon", "lempar", "generator", "compiler"],
-    "homepage": "https://github.com/fpoirotte/cryptal",
+    "homepage": "https://github.com/fpoirotte/PHP_ParserGenerator_Installer",
     "license": "BSD-3-Clause",
     "authors": [
         {
