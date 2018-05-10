@@ -53,7 +53,7 @@ class Installer extends LibraryInstaller
         $parsers = self::normalizeParsers($package);
         foreach ($parsers as $target => $source) {
             $outfile = self::getOutputPrefix($target) . '.php';
-            if (@filemtime($outfile) >= @filemtime($source)) {
+            if ((int) @filemtime($outfile) > (int) @filemtime($source)) {
                 continue;
             }
 
