@@ -1,0 +1,37 @@
+{
+    "prefer-stable": true,
+    "name": "fpoirotte/php_parsergenerator_installer",
+    "type": "composer-plugin",
+    "description": "Automatically compiles parsers upon a package's installation",
+    "keywords": ["parser", "lemon", "lempar", "generator", "compiler"],
+    "homepage": "https://github.com/fpoirotte/cryptal",
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "François Poirotte",
+            "email": "clicky@erebot.net",
+            "role": "lead"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/fpoirotte/PHP_ParserGenerator_Installer/issues",
+        "irc": "irc://irc.iiens.net/Clicky",
+        "source": "https://github.com/fpoirotte/PHP_ParserGenerator_Installer"
+    },
+    "autoload": {
+        "psr-4": {
+            "fpoirotte\\PHP_ParserGenerator_Installer\\": "src/"
+        }
+    },
+    "extra": {
+        "class": "fpoirotte\\PHP_ParserGenerator_Installer\\InstallerPlugin"
+    },
+    "require": {
+        "fpoirotte/php_parsergenerator": "^0.2.0",
+        "composer-plugin-api": "^1.0"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "*",
+        "composer/composer": "^1.3"
+    }
+}
