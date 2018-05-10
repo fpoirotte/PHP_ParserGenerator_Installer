@@ -32,7 +32,7 @@ class Plugin implements PluginInterface, EventSubscriberInterface
     {
         $rootPackage = $this->composer->getPackage();
         if ($this->installer->supports($rootPackage->getType())) {
-            $this->installer->installParsers($rootPackage);
+            $this->installer->installParsers($rootPackage, false);
         }
     }
 }

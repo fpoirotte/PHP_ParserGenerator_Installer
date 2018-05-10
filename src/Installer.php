@@ -36,7 +36,7 @@ class Installer extends LibraryInstaller
         return $outfile;
     }
 
-    public function installParsers(PackageInterface $package)
+    public function installParsers(PackageInterface $package, $isDependency)
     {
         $phplemon = getenv('PHPLEMON');
         if ($phplemon === false || $phplemon === '') {
@@ -51,7 +51,13 @@ class Installer extends LibraryInstaller
 
         $phplemon = escapeshellcmd($phplemon);
         $parsers = self::normalizeParsers($package);
+        $pkgDir = $this->getInstallPath($package) . DIRECTORY_SEPARATOR;
         foreach ($parsers as $target => $source) {
+            if ($isDependency) {
+                $source = $pkgDir . $source;
+                $target = $pkgDir . $target;
+            }
+
             $outfile = self::getOutputPrefix($target) . '.php';
             if ((int) @filemtime($outfile) > (int) @filemtime($source)) {
                 continue;
@@ -67,10 +73,11 @@ class Installer extends LibraryInstaller
     private function removeParsers(PackageInterface $package)
     {
         $parsers = self::normalizeParsers($package);
+        $pkgDir = $this->getInstallPath($package) . DIRECTORY_SEPARATOR;
         foreach ($parsers as $target => $source) {
             $target = self::getOutputPrefix($target);
-            @unlink($target . '.php');
-            @unlink($target . '.out');
+            @unlink($pkgDir . $target . '.php');
+            @unlink($pkgDir . $target . '.out');
         }
     }
 
@@ -83,7 +90,7 @@ class Installer extends LibraryInstaller
     public function install(InstalledRepositoryInterface $repo, PackageInterface $package)
     {
         $res = parent::install($repo, $package);
-        $this->installParsers($package);
+        $this->installParsers($package, true);
         return $res;
     }
 
@@ -99,8 +106,8 @@ class Installer extends LibraryInstaller
     public function update(InstalledRepositoryInterface $repo, PackageInterface $initial, PackageInterface $target)
     {
         $res = parent::update($repo, $initial, $target);
-        $this->removeParsers($initial);
-        $this->installParsers($target);
+        $this->removeParsers($initial, true);
+        $this->installParsers($target, true);
         return $res;
     }
 
@@ -113,7 +120,7 @@ class Installer extends LibraryInstaller
     public function uninstall(InstalledRepositoryInterface $repo, PackageInterface $package)
     {
         $res = parent::uninstall($repo, $package);
-        $this->removeParsers($package);
+        $this->removeParsers($package, true);
         return $res;
     }
 
