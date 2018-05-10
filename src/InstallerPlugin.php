@@ -1,6 +1,6 @@
 <?php
 
-namespace fpoirotte\PHP_ParserGenerator;
+namespace fpoirotte\PHP_ParserGenerator_Installer;
 
 use Composer\Package\PackageInterface;
 use Composer\Installer\LibraryInstaller;
