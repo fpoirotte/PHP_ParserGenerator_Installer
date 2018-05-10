@@ -36,7 +36,7 @@ class Installer extends LibraryInstaller
         return $outfile;
     }
 
-    private function installParsers(PackageInterface $package)
+    public function installParsers(PackageInterface $package)
     {
         $phplemon = getenv('PHPLEMON');
         if ($phplemon === false || $phplemon === '') {
@@ -52,6 +52,7 @@ class Installer extends LibraryInstaller
         $phplemon = escapeshellcmd($phplemon);
         $parsers = self::normalizeParsers($package);
         foreach ($parsers as $target => $source) {
+            $this->io->writeError("<info>Compiling '$target' from '$source'</info>");
             $target = escapeshellarg('o=' . $target);
             $source = escapeshellarg($source);
             passthru("$phplemon -q -s $target $source");
