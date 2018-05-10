@@ -10,6 +10,8 @@ class Installer extends LibraryInstaller
 {
     const SUPPORTED_TYPE = 'php-parsers';
 
+    private $operations = array();
+
     private static function normalizeParsers(PackageInterface $package)
     {
         $res = array();
@@ -34,6 +36,11 @@ class Installer extends LibraryInstaller
             );
         }
         return $outfile;
+    }
+
+    public function getOperations()
+    {
+        return $this->operations;
     }
 
     public function installParsers(PackageInterface $package, $isDependency)
@@ -90,7 +97,7 @@ class Installer extends LibraryInstaller
     public function install(InstalledRepositoryInterface $repo, PackageInterface $package)
     {
         $res = parent::install($repo, $package);
-        $this->installParsers($package, true);
+        $this->operations[] = array('+', $package);
         return $res;
     }
 
@@ -106,8 +113,8 @@ class Installer extends LibraryInstaller
     public function update(InstalledRepositoryInterface $repo, PackageInterface $initial, PackageInterface $target)
     {
         $res = parent::update($repo, $initial, $target);
-        $this->removeParsers($initial, true);
-        $this->installParsers($target, true);
+        $this->operations[] = array('-', $initial);
+        $this->operations[] = array('+', $target);
         return $res;
     }
 
@@ -120,7 +127,7 @@ class Installer extends LibraryInstaller
     public function uninstall(InstalledRepositoryInterface $repo, PackageInterface $package)
     {
         $res = parent::uninstall($repo, $package);
-        $this->removeParsers($package, true);
+        $this->operations[] = array('-', $package);
         return $res;
     }
 
