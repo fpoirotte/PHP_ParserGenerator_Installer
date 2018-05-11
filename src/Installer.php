@@ -77,7 +77,7 @@ class Installer extends LibraryInstaller
         }
     }
 
-    private function removeParsers(PackageInterface $package)
+    public function removeParsers(PackageInterface $package)
     {
         $parsers = self::normalizeParsers($package);
         $pkgDir = $this->getInstallPath($package) . DIRECTORY_SEPARATOR;
