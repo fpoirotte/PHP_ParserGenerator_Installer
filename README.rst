@@ -14,11 +14,13 @@ Usage
 -----
 
 To use this installer, edit your project's ``composer.json`` file:
+
 * Set the type to ``php-parsers``
 * Add a requirement on ``fpoirotte/php_parsergenerator_installer``
 * Declare your parsers using the ``php-parsers`` extra option
 
 The extra option may contain either:
+
 * A list of relative paths to grammars: for each such grammar, a parser
   will be generated in the same folder with the same base name
   (eg. ``src/Foo.y`` get compiled into ``src/Foo.php``)
@@ -29,7 +31,7 @@ configuration to build a parser in ``src/PluralParser.php`` based on
 the contents of the grammar located in ``data/PluralParser.y``,
 relative to the package's root directory:
 
-.. sourcecode:: json
+..  sourcecode:: json
 
    {
         "name": "erebot/intl",
@@ -43,6 +45,33 @@ relative to the package's root directory:
             }
         }
     }
+
+Now, when installing/updating a package that uses this installer,
+you will see output similar to this one:
+
+..  sourcecode:: console
+
+    clicky@localhost:~/git/Erebot/Styling$ composer.phar update
+    Loading composer repositories with package information
+    Updating dependencies (including require-dev)
+    Package operations: 34 installs, 0 updates, 0 removals
+      - Installing fpoirotte/php_parsergenerator (0.2.3): Loading from cache
+      - Installing fpoirotte/php_parsergenerator_installer (0.1.4): Loading from cache
+      - Installing erebot/dom (0.1.0): Loading from cache
+      - Installing erebot/plop (0.6.0): Loading from cache
+      - Installing erebot/intl (0.2.2): Loading from cache
+      ...
+    erebot/plop suggests installing psr/log (Provides the PSR-3 logging framework)
+    phpunit/phpunit suggests installing phpunit/php-invoker (^2.0)
+    Generating autoload files
+    Compiling '.../vendor/erebot/intl/src/PluralParser.php' from '.../vendor/erebot/intl/data/PluralParser.y'
+    Parser statistics: 28 terminals, 3 nonterminals, 27 rules
+                       55 states, 0 parser table entries, 20 conflicts
+    20 parsing conflicts.
+    Compiling 'src/Styling/Parser.php' from 'data/Styling.y'
+    Parser statistics: 8 terminals, 3 nonterminals, 9 rules
+                       17 states, 0 parser table entries, 0 conflicts
+
 
 Copyright and license
 ---------------------
