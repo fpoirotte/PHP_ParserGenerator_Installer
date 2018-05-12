@@ -77,6 +77,6 @@ for more information.
 
 ..  _`fpoirotte/php_parsergenerator`: https://packagist.org/packages/fpoirotte/php_parsergenerator
 ..  _`Erebot/intl`: https://packagist.org/packages/erebot/intl
-..  _`LICENSE file`: https://github.com/fpoirotte/PHP_ParserGenerator/blob/master/LICENSE.txt
+..  _`LICENSE file`: https://github.com/fpoirotte/PHP_ParserGenerator_Installer/blob/master/LICENSE
 
 ..  : vim: ts=4 et
