@@ -57,12 +57,7 @@ you will see output similar to this one:
     Package operations: 34 installs, 0 updates, 0 removals
       - Installing fpoirotte/php_parsergenerator (0.2.3): Loading from cache
       - Installing fpoirotte/php_parsergenerator_installer (0.1.4): Loading from cache
-      - Installing erebot/dom (0.1.0): Loading from cache
-      - Installing erebot/plop (0.6.0): Loading from cache
-      - Installing erebot/intl (0.2.2): Loading from cache
       ...
-    erebot/plop suggests installing psr/log (Provides the PSR-3 logging framework)
-    phpunit/phpunit suggests installing phpunit/php-invoker (^2.0)
     Generating autoload files
     Compiling '.../vendor/erebot/intl/src/PluralParser.php' from '.../vendor/erebot/intl/data/PluralParser.y'
     Parser statistics: 28 terminals, 3 nonterminals, 27 rules
