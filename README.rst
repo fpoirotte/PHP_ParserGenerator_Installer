@@ -23,8 +23,8 @@ The extra option may contain either:
 
 * A list of relative paths to grammars: for each such grammar, a parser
   will be generated in the same folder with the same base name
-  (eg. ``src/Foo.y`` get compiled into ``src/Foo.php``)
-* A mapping between the expected parser and their source grammar (see below)
+  (eg. ``src/Foo.y`` gets compiled into ``src/Foo.php``)
+* A mapping between the expected parsers and their source grammar (see below)
 
 For example, the ``erebot/intl`` Composer package uses the following
 configuration to build a parser in ``src/PluralParser.php`` based on
